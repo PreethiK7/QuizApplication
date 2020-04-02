@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Add Quiz Success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="content_main">
+            {% if message == True %}
+            <h4>Quiz added successfully.</h4>
+            {% endif %}
+            {% if message == False %}
+            <h4>Quiz not added successfully. Please check the code and try again.</h4>
+            {% endif %}
+            <a class="btn btn-primary" href="/home">Home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Take Quiz</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="content_main">
+            <h2 style="text-align: center; padding: 20px">Quiz</h2>
+            <form class="form-horizontal" action="submitAnswer" method="post">
+                {% csrf_token %}
+                <div class="form-group" style="padding: 20px">
+                    <div class="col-sm-10">
+                        <label for="stuName">Enter your full name : </label>
+                        <input style="display: inline-block;width: 70%"type="text" class="form-control" id="stuName" name="stuName" placeholder="Your Name">
+                    </div>
+                </div>
+                {%  for quiz in Quiz %}
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="ques{{ quiz.question.question_id }}" name="question" disabled="true" value="{{ quiz.question.question_value }}">
+                        </div>
+                    </div>
+                    {% for opt in quiz.options %}
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <input type="radio" name="ques{{ quiz.question.question_id }}" id="opt{{ opt.option_id }}" value="{{ opt.option_id }}">
+                            <label for="opt{{ opt.option_id }}" value="{{ opt.option_value }}">{{ opt.option_value }}</label>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+                <div class="form-group">
+                    <div class="col-sm-10">
+                        <input id="submit" type="submit" class="btn btn-primary" name="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
