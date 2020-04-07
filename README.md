@@ -2,7 +2,7 @@
 QuizApplication
 
 # Introduction
-This application is for Udemy Web App Coding Challenge
+This application is Web Application
 
 # Requirements
 This application requires Python with version 3.7 or above
